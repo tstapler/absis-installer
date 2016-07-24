@@ -1,0 +1,30 @@
+# vim:ft=ansible:
+---
+# - name: Install and configure Docker
+#   hosts: localhost
+#   become: yes
+#   roles:
+#     - { role: docker, tags: ["docker"] }
+
+
+# Add role to install jeeves
+
+
+- name: Install Rancher
+  hosts: localhost
+  become: yes
+  roles:
+    - { role: rancher, tags: ["rancher"] }
+
+- name: Install Rancher client
+  hosts: localhost
+  become: yes
+  roles:
+    - { role: rancher_reg, tags: ["rancher_reg"]}
+
+
+- name: Deploy Plex Container
+  hosts: localhost
+  become: yes
+  roles:
+    - { role: plex, tags: ["plex"] }
