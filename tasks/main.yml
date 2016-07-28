@@ -1,2 +1,9 @@
 ---
 # tasks file for absis-installer
+- name: Install files using apt-get
+  apt:
+    name={{ item }}
+    state=present
+  become: yes
+  with_items:
+    - samba

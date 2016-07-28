@@ -1,0 +1,22 @@
+---
+# tasks file for openldap
+- name: Create OpenLDAP Container
+  docker: 
+    name: open-ldap
+    image: osixia/openldap
+    state: reloaded
+    restart_policy: always
+    net: host
+    env:
+      RANCHER_NETWORK=true,
+      LDAP_ORGANIZATION="{{ ldap_org }}",
+      LDAP_DOMAIN="{{ ldap_domain }}"
+    volumes: "{{ ldap_volumes }}"
+
+- name: Create OpenLDAP PHP Management Server
+  docker:
+    name: open-ldap-admin
+    image: osixia/phpldapadmin
+    state: reloaded
+    restart_policy: always
+    net: host

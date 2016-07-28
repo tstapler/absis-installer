@@ -4,7 +4,8 @@
   docker: 
     name: plex
     image: linuxserver/plex
-    state: restarted
+    state: reloaded
+    restart_policy: always
     net: host
     env:
       RANCHER_NETWORK=true,

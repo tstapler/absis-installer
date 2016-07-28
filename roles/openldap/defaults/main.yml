@@ -1,0 +1,7 @@
+---
+# defaults file for openldap
+ldap_org: Big Blue
+ldap_domain: bigbluehouse.com
+ldap_volumes:
+  - /var/lib/ldap:/var/lib/ldap
+  - /etc/ldap/slapd.d

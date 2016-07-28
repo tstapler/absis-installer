@@ -4,6 +4,7 @@
       name: "{{ rancher_name }}"
       image: rancher/server:latest
       restart_policy: always
+      state: reloaded
       ports: 
         - "{{ rancher_port }}:8080"
 

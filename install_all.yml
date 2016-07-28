@@ -1,14 +1,9 @@
 # vim:ft=ansible:
 ---
-# - name: Install and configure Docker
-#   hosts: localhost
-#   become: yes
-#   roles:
-#     - { role: docker, tags: ["docker"] }
-
-
-# Add role to install jeeves
-
+- name: Install dependencies
+  hosts: localhost
+  tasks:
+    - include: tasks/main.yml
 
 - name: Install Rancher
   hosts: localhost
@@ -22,9 +17,16 @@
   roles:
     - { role: rancher_reg, tags: ["rancher_reg"]}
 
+# Add and configure LDAP
 
 - name: Deploy Plex Container
   hosts: localhost
   become: yes
   roles:
     - { role: plex, tags: ["plex"] }
+
+- name: Deploy OpenLDAP Containers
+  hosts: localhost
+  become: yes
+  roles:
+    - { role: openldap, tags: ["openldap"] }
