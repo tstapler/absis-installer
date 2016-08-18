@@ -4,6 +4,7 @@
   hosts: localhost
   tasks:
     - include: tasks/main.yml
+    - include_vars: defaults/main.yml
 
 - name: Install Rancher
   hosts: localhost
@@ -25,8 +26,27 @@
   roles:
     - { role: plex, tags: ["plex"] }
 
-- name: Deploy OpenLDAP Containers
+# - name: Deploy OpenLDAP Containers
+#   hosts: localhost
+#   become: yes
+#   roles:
+#     - { role: openldap, tags: ["openldap"] }
+
+- name: Deploy Pydio Container
   hosts: localhost
   become: yes
   roles:
-    - { role: openldap, tags: ["openldap"] }
+    - { role: pydio, tags: ["pydio"] }
+
+- name: Setup Nginx
+  hosts: localhost
+  roles:
+    - role: nginx
+      nginx_http_params:
+      nginx_sites:
+        rancher:
+          - listen 80
+          - server_name rancher
+          - root /rancher
+          - location / { proxy_pass http://127.0.0.1:8080 }
+      nginx_configs:

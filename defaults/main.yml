@@ -1,2 +1,4 @@
 ---
 # defaults file for absis-installer
+docker_puid: 1001
+docker_guid: 999

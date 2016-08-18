@@ -1,3 +1,6 @@
 [submodule "roles/docker"]
 	path = roles/docker
 	url = https://github.com/debops/ansible-docker
+[submodule "roles/ansible-role-nginx"]
+	path = roles/nginx
+	url = https://github.com/jdauphant/ansible-role-nginx

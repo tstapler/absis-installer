@@ -7,3 +7,4 @@
   become: yes
   with_items:
     - samba
+    - mosh

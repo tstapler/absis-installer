@@ -1,15 +1,16 @@
 ---
-# tasks file for plex
-- name: Create Plex Container
+# tasks file for pydio
+- name: Create Pydio Container
   docker: 
-    name: plex
-    image: linuxserver/plex
+    name: pydio
+    image: linuxserver/pydio
     state: reloaded
     restart_policy: always
-    net: host
+    ports:
+      - "4000:443"
     env:
       RANCHER_NETWORK=true,
       VERSION=latest,
       PUID={{ docker_puid }},
       GUID={{ docker_guid }}
-    volumes: "{{ plex_volumes }}"
+    volumes: "{{ pydio_volumes }}"

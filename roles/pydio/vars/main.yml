@@ -1,0 +1,6 @@
+---
+# vars file for pydio
+pydio_volumes: 
+  - /srv/Stapler-Services/Pydio:/config
+  - /srv/Stapler-Services/The File Database:/data
+  - /etc/localtime:/etc/localtime:ro

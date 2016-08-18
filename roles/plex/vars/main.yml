@@ -1,7 +1,5 @@
 ---
 # vars file for plex
-plex_puid: 1001
-plex_guid: 999
 plex_volumes:
   - /serv/Stapler-Services/Plex:/config
   - /srv/Stapler-Services/The Video Database/Instructional:/data/instructional
