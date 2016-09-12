@@ -32,21 +32,30 @@
 #   roles:
 #     - { role: openldap, tags: ["openldap"] }
 
-- name: Deploy Pydio Container
-  hosts: localhost
-  become: yes
-  roles:
-    - { role: pydio, tags: ["pydio"] }
+# - name: Deploy Pydio Container
+#   hosts: localhost
+#   become: yes
+#   roles:
+#     - { role: pydio, tags: ["pydio"] }
 
 - name: Setup Nginx
   hosts: localhost
+  become: yes
   roles:
     - role: nginx
       nginx_http_params:
+        - sendfile on
+        - access_log /var/log/nginx/access.log
       nginx_sites:
         rancher:
           - listen 80
-          - server_name rancher
-          - root /rancher
-          - location / { proxy_pass http://127.0.0.1:8080 }
+          - location /rancher/ { proxy_pass http://127.0.0.1:8080; }
+        plex:
+          - listen 80
+          - location /plex/ { proxy_pass http://127.0.0.1:32400/web; }
       nginx_configs:
+        proxy:
+          - proxy_set_header X-Real-IP  $remote_addr
+          - proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for
+  tags:
+    - nginx
