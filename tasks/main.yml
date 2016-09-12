@@ -8,3 +8,11 @@
   with_items:
     - samba
     - mosh
+
+- name: Install docker-py
+  pip:
+    name={{item}}
+    state=present
+  become: yes
+  with_items:
+    - docker-py

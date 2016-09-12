@@ -1,9 +1,9 @@
 ---
 # vars file for plex
 plex_volumes:
-  - /serv/Stapler-Services/Plex:/config
-  - /srv/Stapler-Services/The Video Database/Instructional:/data/instructional
-  - /srv/Stapler-Services/The Video Database/Movies:/data/movies
-  - /srv/Stapler-Services/The Video Database/Personal:/data/personal
-  - /srv/Stapler-Services/The Video Database/Television:/data/tv
-  - /srv/Stapler-Services/The Music Database:/data/music
+  - /home/tstapler/The_Archive/Plex:/config
+  - /home/tstapler/The_Archive/The Video Database/Instructional:/data/instructional
+  - /home/tstapler/The_Archive/The Video Database/Movies:/data/movies
+  - /home/tstapler/The_Archive/The Video Database/Personal:/data/personal
+  - /home/tstapler/The_Archive/The Video Database/Television:/data/tv
+  - /home/tstapler/The_Archive/The Music Database:/data/music
