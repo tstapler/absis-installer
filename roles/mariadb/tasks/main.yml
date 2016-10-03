@@ -1,0 +1,24 @@
+---
+- file:
+    path: "{{item}}"
+    state: directory
+  with_items:
+    - "{{ mariadb_required_host_dirs }}"
+
+- include_vars: cred.yml
+
+- name: Create MariaDB Container
+  docker:
+    name: mariadb
+    image: linuxserver/mariadb
+    state: reloaded
+    restart_policy: always
+    ports:
+      - "3306:3306"
+    env:
+      RANCHER_NETWORK=true,
+      VERSION=latest,
+      PUID={{ docker_puid }},
+      GUID={{ docker_pgid }},
+      MYSQL_ROOT_PASSWORD={{mariadb_root_password}}
+    volumes: "{{ mariadb_volumes }}"

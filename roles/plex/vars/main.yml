@@ -1,9 +1,9 @@
 ---
 # vars file for plex
 plex_volumes:
-  - "/home/tstapler/The_Archive/Plex:/config"
-  - "/home/tstapler/The_Archive/The Video Database/Instructional:/data/instructional"
-  - "/home/tstapler/The_Archive/The Video Database/Movies:/data/movies"
-  - "/home/tstapler/The_Archive/The Video Database/Personal:/data/personal"
-  - "/home/tstapler/The_Archive/The Video Database/Television:/data/tv"
-  - "/home/tstapler/The_Archive/The Music Database:/data/music"
+  - "{{ stapler_data_dir }}/Plex:/config"
+  - "{{ stapler_data_dir }}/The Video Database/Instructional:/data/instructional"
+  - "{{ stapler_data_dir }}/The Video Database/Movies:/data/movies"
+  - "{{ stapler_data_dir }}/The Video Database/Personal:/data/personal"
+  - "{{ stapler_data_dir }}/The Video Database/Television:/data/tv"
+  - "{{ stapler_data_dir }}/The Music Database:/data/music"

@@ -16,3 +16,36 @@
   become: yes
   with_items:
     - docker-py
+
+- name: Add user to docker group
+  user: name=tstapler groups=docker append=yes
+  become: yes
+
+- name: Set Data Directory
+  set_fact:
+    stapler_data_dir: "/home/tstapler/The_Archive"
+  tags:
+    - always
+
+- name: Find users uid
+  shell: "id | awk 'match($0, /uid=([0-9]+)/) { print substr( $1, RSTART, RLENGTH)}' | sed 's/uid=//g'"
+  register: uid
+  tags:
+    - always
+
+- name: Find users gid
+  shell: "id | awk 'match($0, /gid=([0-9]+)/) { print substr( $0, RSTART, RLENGTH)}' | sed 's/gid=//g'"
+  register: gid
+  tags:
+    - always
+
+- name: Set uid and gid
+  set_fact:
+    docker_puid: "{{uid.stdout}}"
+    docker_pgid: "{{gid.stdout}}"
+  tags:
+    - always
+
+- debug: msg="docker puid - {{docker_puid}}, docker guid - {{docker_pgid}}"
+  tags:
+    - always

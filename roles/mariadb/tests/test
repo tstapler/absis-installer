@@ -1,0 +1,11 @@
+---
+
+#!/bin/bash
+
+# test: Test mariadb
+# Copyright (C) 2016 Tyler Stapler <tystapler@gmail.com>
+
+. "lib/test"
+
+assert_playbook_runs
+assert_playbook_idempotent

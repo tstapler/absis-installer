@@ -1,16 +1,18 @@
 ---
 # tasks file for pydio
 - name: Create Pydio Container
-  docker: 
+  docker:
     name: pydio
     image: linuxserver/pydio
     state: reloaded
     restart_policy: always
+    links: "mariadb:db"
     ports:
       - "4000:443"
+      - "4001:80"
     env:
       RANCHER_NETWORK=true,
       VERSION=latest,
       PUID={{ docker_puid }},
-      GUID={{ docker_guid }}
+      GUID={{ docker_pgid }}
     volumes: "{{ pydio_volumes }}"
