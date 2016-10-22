@@ -1,5 +1,5 @@
 ---
-pudio_required_host_dirs:
+pydio_required_host_dirs:
   - "{{ stapler_data_dir }}/Pydio"
 
 # vars file for pydio
