@@ -6,6 +6,7 @@
     image: linuxserver/plex
     state: reloaded
     restart_policy: always
+    net: host
     env:
       RANCHER_NETWORK=true,
       VERSION=latest,

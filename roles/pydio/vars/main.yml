@@ -1,9 +1,12 @@
 ---
 pydio_required_host_dirs:
   - "{{ stapler_data_dir }}/Pydio"
+  - "{{ stapler_data_dir }}/Pydio/config"
+  - "{{ stapler_data_dir }}/Pydio/data"
 
 # vars file for pydio
 pydio_volumes:
-  - "{{ stapler_data_dir }}/Pydio:/config"
-  - "{{ stapler_data_dir }}/The File Database:/data"
+  - "{{ stapler_data_dir }}/Pydio/config:/config"
+  - "{{ stapler_data_dir }}/Pydio/data:/data"
+  - "{{ stapler_data_dir }}/The File Database:/files"
   - "/etc/localtime:/etc/localtime:ro"

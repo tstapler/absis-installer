@@ -4,3 +4,6 @@
 [submodule "roles/ansible-role-nginx"]
 	path = roles/nginx
 	url = https://github.com/jdauphant/ansible-role-nginx
+[submodule "roles/letsencrypt"]
+	path = roles/letsencrypt
+	url = https://github.com/jaywink/ansible-letsencrypt

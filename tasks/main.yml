@@ -3,16 +3,18 @@
 - name: Install files using apt-get
   apt:
     name={{ item }}
-    state=present
+    state=latest
   become: yes
   with_items:
     - samba
     - mosh
+    - ddclient
+    - mysql-client
 
 - name: Install docker-py
   pip:
     name={{item}}
-    state=present
+    state=latest
   become: yes
   with_items:
     - docker-py
@@ -49,3 +51,13 @@
 - debug: msg="docker puid - {{docker_puid}}, docker guid - {{docker_pgid}}"
   tags:
     - always
+
+- name: Link ddclient systemd timer
+  file:
+    src: "{{playbook_dir}}/files/{{item}}"
+    dest: "/etc/systemd/system/{{item}}"
+    state: link
+  with_items:
+    - "staplerstation-ddclient.service"
+  become: yes
+

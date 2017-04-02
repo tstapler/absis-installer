@@ -17,6 +17,7 @@
   docker:
     name: open-ldap-admin
     image: osixia/phpldapadmin
-    state: reloaded
+    state: started
     restart_policy: always
     net: host
+

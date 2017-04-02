@@ -11,8 +11,7 @@
   docker:
     name: mariadb
     image: linuxserver/mariadb
-    state: reloaded
-    restart_policy: always
+    state: started
     ports:
       - "3306:3306"
     env:
